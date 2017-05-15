@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_cadastrar"
+            android:icon="@drawable/ic_menu_send"
+            android:title="Cadastrar" />
+        <item
+            android:id="@+id/nav_localizar"
+            android:icon="@drawable/ic_menu_share"
+            android:title="Localizar" />
+        <item
+            android:id="@+id/nav_configurar"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="Configurar" />
+    </group>
+
+
+</menu>
