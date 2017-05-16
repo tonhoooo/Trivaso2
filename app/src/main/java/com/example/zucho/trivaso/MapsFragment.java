@@ -2,6 +2,7 @@ package com.example.zucho.trivaso;
 
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
+import android.widget.Toast;
 
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
@@ -10,18 +11,15 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
+public class MapsFragment extends SupportMapFragment implements OnMapReadyCallback, GoogleMap.OnMapClickListener {
 
     private GoogleMap mMap;
 
     @Override
-    protected void onCreate(Bundle savedInstanceState) {
+    public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_maps);
-        // Obtain the SupportMapFragment and get notified when the map is ready to be used.
-        SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
-                .findFragmentById(R.id.map);
-        mapFragment.getMapAsync(this);
+
+        getMapAsync(this);
     }
 
 
@@ -38,9 +36,31 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
 
+        mMap.setOnMapClickListener(this);
+
+        mMap.getUiSettings().setZoomControlsEnabled(true);
+
+
         // Add a marker in Sydney and move the camera
-        LatLng sydney = new LatLng(-34, 151);
-        mMap.addMarker(new MarkerOptions().position(sydney).title("Marker in Sydney"));
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(sydney));
+        LatLng univates = new LatLng(-29.4451112, -51.9546);
+        MarkerOptions marker = new MarkerOptions();
+        marker.position(univates);
+        marker.title("Banheiro da UNIVATES");
+
+
+        mMap.addMarker(marker);
+
+        LatLng biblioteca = new LatLng(-29.445556, -51.953279);
+        LatLng vizinho = new LatLng(-29.443619, -51.954646);
+        mMap.addMarker(new MarkerOptions().position(biblioteca).title("Banheiro Biblioteca"));
+        mMap.addMarker(new MarkerOptions().position(vizinho).title("Banheiro do Vizinho"));
+
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(univates));
+
+    }
+
+    @Override
+    public void onMapClick(LatLng latLng) {
+        Toast.makeText(getContext(), "Coordenadas: " + latLng.toString(), Toast.LENGTH_SHORT).show();
     }
 }
