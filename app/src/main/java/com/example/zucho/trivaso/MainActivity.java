@@ -41,7 +41,7 @@ public class MainActivity extends AppCompatActivity
 
         FragmentTransaction transaction = fragmentManager.beginTransaction();
 
-        transaction.add(R.id.container, new MapsFragment(), "MapsFragment");
+        transaction.add(R.id.container, new LocalizarFragment(), "LocalizarFragment");
 
         transaction.commitAllowingStateLoss();
     }
@@ -96,8 +96,7 @@ public class MainActivity extends AppCompatActivity
         switch (id) {
             case R.id.nav_cadastrar:
 
-                Intent intent = new Intent(this,CadastrarActivity.class);
-                this.startActivity(intent);
+                showFragment(new CadastrarFragment(), "CadastrarFragment");
 
                 break;
             case R.id.nav_localizar:

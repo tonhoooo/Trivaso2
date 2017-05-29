@@ -14,7 +14,9 @@ import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
 import com.google.android.gms.maps.SupportMapFragment;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
 import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
 public class LocalizarFragment extends SupportMapFragment implements OnMapReadyCallback, GoogleMap.OnMapClickListener, LocationListener {
@@ -24,6 +26,10 @@ public class LocalizarFragment extends SupportMapFragment implements OnMapReadyC
     private GoogleMap mMap;
 
     private LocationManager locationManager;
+
+    Marker currLocationMarker;
+
+    LatLng latLng;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -91,8 +97,23 @@ public class LocalizarFragment extends SupportMapFragment implements OnMapReadyC
 
     @Override
     public void onLocationChanged(Location location) {
-        LatLng myLocation = new LatLng(location.getLatitude(), location.getLongitude());
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(myLocation,16));
-        Toast.makeText(getContext(), "Localização:\nLatitude = " + location.getLatitude() + "\nLongitude = " + location.getLongitude(), Toast.LENGTH_SHORT).show();
+
+            //place marker at current position
+            //mGoogleMap.clear();
+            if (currLocationMarker != null) {
+                currLocationMarker.remove();
+            }
+            latLng = new LatLng(location.getLatitude(), location.getLongitude());
+            MarkerOptions markerOptions = new MarkerOptions();
+            markerOptions.position(latLng);
+            markerOptions.title("Current Position");
+            markerOptions.icon(BitmapDescriptorFactory.defaultMarker(BitmapDescriptorFactory.HUE_MAGENTA));
+            currLocationMarker = mMap.addMarker(markerOptions);
+
+            //Toast.makeText(this,"Location Changed",Toast.LENGTH_SHORT).show();
+
+            //zoom to current position:
+            mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng,16));
+
     }
 }
