@@ -1,6 +1,8 @@
 package com.example.zucho.trivaso;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentTransaction;
 import android.support.design.widget.NavigationView;
@@ -76,18 +78,40 @@ public class MainActivity extends AppCompatActivity
         return super.onOptionsItemSelected(item);
     }
 
+    private void showFragment(Fragment fragment, String name){
+
+        FragmentTransaction transaction = fragmentManager.beginTransaction();
+
+        transaction.replace(R.id.container, fragment, name);
+
+        transaction.commit();
+    }
+
     @SuppressWarnings("StatementWithEmptyBody")
     @Override
     public boolean onNavigationItemSelected(MenuItem item) {
         // Handle navigation view item clicks here.
         int id = item.getItemId();
 
-        if (id == R.id.nav_cadastrar) {
-            // Handle the camera action
-        } else if (id == R.id.nav_localizar) {
+        switch (id) {
+            case R.id.nav_cadastrar:
 
-        } else if (id == R.id.nav_configurar) {
+                Intent intent = new Intent(this,CadastrarActivity.class);
+                this.startActivity(intent);
 
+                break;
+            case R.id.nav_localizar:
+
+                showFragment(new LocalizarFragment(), "LocalizarFragment");
+
+                break;
+
+            case R.id.nav_avaliar:
+
+                break;
+            case R.id.nav_configurar:
+
+                break;
         }
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);

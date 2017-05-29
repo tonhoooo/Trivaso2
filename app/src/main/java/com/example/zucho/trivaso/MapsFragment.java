@@ -40,6 +40,8 @@ public class MapsFragment extends SupportMapFragment implements OnMapReadyCallba
 
         mMap.getUiSettings().setZoomControlsEnabled(true);
 
+        mMap.getUiSettings().setMyLocationButtonEnabled(true);
+
 
         // Add a marker in Sydney and move the camera
         LatLng univates = new LatLng(-29.4451112, -51.9546);
