@@ -43,30 +43,23 @@ public class LocalizarFragment extends SupportMapFragment implements OnMapReadyC
     @Override
     public void onMapReady(GoogleMap googleMap) {
 
-        //mMap.setMyLocationEnabled(true);
+        locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
 
-        try {
-            locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
+        Criteria criteria = new Criteria();
 
-            Criteria criteria = new Criteria();
+        String provider = locationManager.getBestProvider(criteria, true);
 
-            String provider = locationManager.getBestProvider(criteria, true);
+        Toast.makeText(getActivity(), "Provider: " + provider, Toast.LENGTH_LONG);
 
-            Toast.makeText(getActivity(), "Provider: " + provider, Toast.LENGTH_LONG);
+        mMap = googleMap;
 
-            mMap = googleMap;
+        mMap.setOnMapClickListener(this);
 
-            mMap.setOnMapClickListener(this);
+        mMap.getUiSettings().setZoomControlsEnabled(true);
 
-            //mMap.getUiSettings().setZoomControlsEnabled(true);
+        mMap.getUiSettings().setMyLocationButtonEnabled(true);
 
-            //mMap.getUiSettings().setMyLocationButtonEnabled(true);
-
-            mMap.getUiSettings().isMapToolbarEnabled();
-
-        } catch (SecurityException ex) {
-            Log.e(TAG, "Error", ex);
-        }
+        mMap.getUiSettings().isMapToolbarEnabled();
 
         // Add a marker in Sydney and move the camera
         LatLng univates = new LatLng(-29.4451112, -51.9546);
@@ -75,7 +68,7 @@ public class LocalizarFragment extends SupportMapFragment implements OnMapReadyC
         marker.title("Banheiro da UNIVATES");
 
 
-        mMap.addMarker(marker);
+        //mMap.addMarker(marker);
 
         mMap.moveCamera(CameraUpdateFactory.newLatLng(univates));
 
