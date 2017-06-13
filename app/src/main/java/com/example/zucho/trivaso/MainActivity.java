@@ -104,6 +104,11 @@ public class MainActivity extends AppCompatActivity
                 showFragment(new LocalizarFragment(), "LocalizarFragment");
 
                 break;
+            case R.id.nav_conta:
+
+                showFragment(new ContaFragment(), "ContaFragment");
+
+                break;
 
             case R.id.nav_avaliar:
 
