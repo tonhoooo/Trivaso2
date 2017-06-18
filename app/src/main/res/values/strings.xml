@@ -10,4 +10,8 @@
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="not_log_in">Sessão não pode ser iniciada.</string>
+    <string name="log_out">Log Out</string>
+    <string name="revoke">Revoke</string>
+    <string name="not_close_session">Não foi possivel encerrar a sessão.</string>
+    <string name="revoke_session">Não foi possível finalisar a sessão.</string>
 </resources>
