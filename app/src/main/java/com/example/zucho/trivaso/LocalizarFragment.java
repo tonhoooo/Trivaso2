@@ -43,23 +43,41 @@ public class LocalizarFragment extends SupportMapFragment implements OnMapReadyC
     @Override
     public void onMapReady(GoogleMap googleMap) {
 
-        locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
+        try {
+            locationManager = (LocationManager) getActivity().getSystemService(Context.LOCATION_SERVICE);
 
-        Criteria criteria = new Criteria();
+            Criteria criteria = new Criteria();
 
-        String provider = locationManager.getBestProvider(criteria, true);
+            String provider = locationManager.getBestProvider(criteria, true);
 
-        Toast.makeText(getActivity(), "Provider: " + provider, Toast.LENGTH_LONG);
+            Toast.makeText(getActivity(), "Provider: " + provider, Toast.LENGTH_LONG);
 
-        mMap = googleMap;
+            mMap = googleMap;
 
-        mMap.setOnMapClickListener(this);
+            mMap.setOnMapClickListener(this);
 
-        mMap.getUiSettings().setZoomControlsEnabled(true);
+            //mMap.getUiSettings().setZoomControlsEnabled(true);
 
-        mMap.getUiSettings().setMyLocationButtonEnabled(true);
+            //mMap.getUiSettings().setMyLocationButtonEnabled(true);
 
-        mMap.getUiSettings().isMapToolbarEnabled();
+
+            mMap.getUiSettings().isMapToolbarEnabled();
+
+            //if (ActivityCompat.checkSelfPermission(getContext(), android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getContext(), android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+                // TODO: Consider calling
+                //    ActivityCompat#requestPermissions
+                // here to request the missing permissions, and then overriding
+                //   public void onRequestPermissionsResult(int requestCode, String[] permissions,
+                //                                          int[] grantResults)
+                // to handle the case where the user grants the permission. See the documentation
+                // for ActivityCompat#requestPermissions for more details.
+            //    return;
+            //}
+            //mMap.setMyLocationEnabled(true);
+
+        } catch (SecurityException ex) {
+            Log.e(TAG, "Error", ex);
+        }
 
         // Add a marker in Sydney and move the camera
         LatLng univates = new LatLng(-29.4451112, -51.9546);
@@ -68,7 +86,7 @@ public class LocalizarFragment extends SupportMapFragment implements OnMapReadyC
         marker.title("Banheiro da UNIVATES");
 
 
-        //mMap.addMarker(marker);
+        mMap.addMarker(marker);
 
         mMap.moveCamera(CameraUpdateFactory.newLatLng(univates));
 

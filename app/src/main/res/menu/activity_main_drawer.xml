@@ -15,10 +15,6 @@
             android:icon="@drawable/ic_thumbs_up_down_black_24dp"
             android:title="Avaliar" />
         <item
-            android:id="@+id/nav_conta"
-            android:icon="@drawable/googleg_standard_color_18"
-            android:title="Conta" />
-        <item
             android:id="@+id/nav_configurar"
             android:icon="@drawable/ic_menu_manage"
             android:title="Configurar" />
