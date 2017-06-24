@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "750128235729",
+    "firebase_url": "https://logintrivaso.firebaseio.com",
+    "project_id": "logintrivaso",
+    "storage_bucket": "logintrivaso.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:750128235729:android:2570a914099365b7",
+        "android_client_info": {
+          "package_name": "com.example.zucho.trivaso"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "750128235729-kmnsff4vtmn0j70gmtmhv05519hgdo3o.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.zucho.trivaso",
+            "certificate_hash": "a847d585fb24cf6d9f30c2de8213b2d6ba1d0d25"
+          }
+        },
+        {
+          "client_id": "750128235729-iams02hg26epcervjs1cgstk3ne1lna8.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA2P6E9mcsRtBhFJ0KI0OxChyOnqysKOUU"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "750128235729-iams02hg26epcervjs1cgstk3ne1lna8.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
