@@ -50,31 +50,14 @@ public class BanheiroDAO {
 
     private static Banheiro JSONtoBanheiro(String strJSON){
         String strBanheiro = strJSON.replaceAll("[\\[\\]]", "");
-        JSONObject banheiroJSON = null;
-        try {
-            banheiroJSON = new JSONObject(strBanheiro);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+        JSONObject banheiroJSON = new JSONObject(strBanheiro);
         Banheiro banheiro = new Banheiro();
-        try {
-            banheiro.setId_banheiro(banheiroJSON.getInt("id_banheiro"));
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        try {
-            banheiro.setNome(banheiroJSON.getString("nome"));
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
-        try {
-            banheiro.setDescricao(banheiroJSON.getString("descricao"));
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+        banheiro.setId_banheiro(banheiroJSON.getInt("id_banheiro"));
+        banheiro.setNome(banheiroJSON.getString("nome"));
+        banheiro.setDescricao(banheiroJSON.getString("descricao"));
         //banheiro.setMedia(banheiroJSON.getDouble("media"));
-        //banheiro.setLat(banheiroJSON.getFloat("lat"));
-        //banheiro.setLon(banheiroJSON.getFloat("lon"));
+        banheiro.setLat(banheiroJSON.getFloat("lat"));
+        banheiro.setLon(banheiroJSON.getFloat("lon"));
         return banheiro;
     }
 
