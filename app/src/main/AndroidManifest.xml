@@ -39,9 +39,10 @@
         -->
         <meta-data
             android:name="com.google.android.geo.API_KEY"
-            android:value="@string/google_maps_key" />
+            android:value="AIzaSyCrpYanURbrX_9plGV1-2Jw0MH7iWyxt44" />
 
-        <activity android:name=".LoginActivity"></activity>
+        <activity android:name=".LoginActivity" />
+        <activity android:name=".CadastrarActivity"></activity>
     </application>
 
 </manifest>

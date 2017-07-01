@@ -5,27 +5,38 @@
     tools:context="com.example.zucho.trivaso.CadastrarFragment">
 
     <!-- TODO: Update blank fragment layout -->
+
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:orientation="vertical"
         android:weightSum="1">
 
-        <EditText
-            android:id="@+id/editText3"
+        <TextView
+            android:id="@+id/textView3"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:ems="10"
-            android:inputType="textPersonName"
-            android:text="Name" />
+            android:text="Nome" />
 
         <EditText
-            android:id="@+id/editText4"
+            android:id="@+id/edtNome"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:ems="10"
-            android:inputType="textPersonName"
+            android:inputType="textPersonName" />
+
+        <TextView
+            android:id="@+id/textView4"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
             android:text="Descrição" />
+
+        <EditText
+            android:id="@+id/edtDescricao"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="textPersonName" />
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -33,14 +44,14 @@
             android:orientation="horizontal">
 
             <CheckBox
-                android:id="@+id/checkBox2"
+                android:id="@+id/cbxChuveiro"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Chuveiro" />
 
             <CheckBox
-                android:id="@+id/checkBox"
+                android:id="@+id/cbxSabonete"
                 android:layout_width="175dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="0.21"
@@ -53,7 +64,7 @@
             android:orientation="horizontal">
 
             <CheckBox
-                android:id="@+id/checkBox4"
+                android:id="@+id/cbxLuz"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -75,15 +86,16 @@
             android:numStars="5" />
 
         <Button
-            android:id="@+id/button2"
+            android:id="@+id/btnCadastrar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Cadastrar" />
 
         <Button
-            android:id="@+id/button3"
+            android:id="@+id/btnCancelar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:text="Cancelar" />
     </LinearLayout>
+
 </FrameLayout>

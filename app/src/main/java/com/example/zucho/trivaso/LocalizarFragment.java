@@ -21,6 +21,8 @@ import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.Marker;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.util.ArrayList;
+
 public class LocalizarFragment extends SupportMapFragment implements OnMapReadyCallback, GoogleMap.OnMapClickListener, LocationListener {
 
     private static final String TAG = "LocalizarFragment";
@@ -31,6 +33,8 @@ public class LocalizarFragment extends SupportMapFragment implements OnMapReadyC
 
     Marker currLocationMarker;
 
+
+
     LatLng latLng;
 
     @Override
@@ -39,6 +43,7 @@ public class LocalizarFragment extends SupportMapFragment implements OnMapReadyC
 
         getMapAsync(this);
     }
+
 
     @Override
     public void onMapReady(GoogleMap googleMap) {
@@ -58,12 +63,11 @@ public class LocalizarFragment extends SupportMapFragment implements OnMapReadyC
 
             //mMap.getUiSettings().setZoomControlsEnabled(true);
 
-            //mMap.getUiSettings().setMyLocationButtonEnabled(true);
+            mMap.getUiSettings().setMyLocationButtonEnabled(true);
 
+            //mMap.getUiSettings().isMapToolbarEnabled();
 
-            mMap.getUiSettings().isMapToolbarEnabled();
-
-            if (ActivityCompat.checkSelfPermission(getContext(), android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getContext(), android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
+            //if (ActivityCompat.checkSelfPermission(getContext(), android.Manifest.permission.ACCESS_FINE_LOCATION) != PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(getContext(), android.Manifest.permission.ACCESS_COARSE_LOCATION) != PackageManager.PERMISSION_GRANTED) {
                 // TODO: Consider calling
                 //    ActivityCompat#requestPermissions
                 // here to request the missing permissions, and then overriding
@@ -71,27 +75,31 @@ public class LocalizarFragment extends SupportMapFragment implements OnMapReadyC
                 //                                          int[] grantResults)
                 // to handle the case where the user grants the permission. See the documentation
                 // for ActivityCompat#requestPermissions for more details.
-                return;
-            }
-            mMap.setMyLocationEnabled(true);
+                //return;
+            //}
+            //mMap.setMyLocationEnabled(true);
 
         } catch (SecurityException ex) {
             Log.e(TAG, "Error", ex);
         }
 
-        // Add a marker in Sydney and move the camera
-        LatLng univates = new LatLng(-29.4451112, -51.9546);
+        Location myLocation = new Location(TAG);
+
+
+
+        // Add a marker and move the camera
+        LatLng mLocation = new LatLng(myLocation.getLatitude(),myLocation.getLongitude());
         MarkerOptions marker = new MarkerOptions();
-        marker.position(univates);
-        marker.title("Banheiro da UNIVATES");
+        marker.position(mLocation);
+        marker.title("Banheiro MyLocation");
 
 
         mMap.addMarker(marker);
 
-        mMap.moveCamera(CameraUpdateFactory.newLatLng(univates));
+        mMap.moveCamera(CameraUpdateFactory.newLatLng(mLocation));
 
-        //mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(univates, 16.0f);
-        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(univates, 16));
+        //mMap.animateCamera(CameraUpdateFactory.newLatLngZoom(mLocation, 16.0f);
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(mLocation, 16));
     }
 
     @Override
@@ -119,5 +127,20 @@ public class LocalizarFragment extends SupportMapFragment implements OnMapReadyC
             //zoom to current position:
             mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng,16));
 
+    }
+
+    public void inserirBanheiros(ArrayList<Banheiro> banheiros){
+        for (Banheiro i:banheiros){
+
+            Banheiro b = (Banheiro) banheiros;
+
+            LatLng mLocation = new LatLng(b.getLat(),b.getLon());
+            MarkerOptions marker = new MarkerOptions();
+            marker.position(mLocation);
+            marker.title(b.getNome());
+
+            mMap.addMarker(marker);
+
+        }
     }
 }

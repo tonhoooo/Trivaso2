@@ -1,33 +1,31 @@
 package com.example.zucho.trivaso;
 
-import android.text.Editable;
-
-import java.util.ArrayList;
-
 /**
- * Created by zucho on 19/06/2017.
+ * Created by zucho on 17/06/2017.
  */
 
-public class Banheiro extends ArrayList<Banheiro> {
+public class Banheiro {
+
     int id_banheiro;
     String nome;
     String descricao;
     double media;
     float lat;
     float lon;
-    int id_statusbanheiros;
+    int id_statusbanheiro;
 
-    public Banheiro() {
+    public Banheiro(int id, String s, int i){
+
     }
 
-    public Banheiro(int id_banheiro, String nome, String descricao, double media, float lat, float lon, int id_statusbanheiros) {
+    public Banheiro() {
         this.id_banheiro = id_banheiro;
         this.nome = nome;
         this.descricao = descricao;
         this.media = media;
         this.lat = lat;
         this.lon = lon;
-        this.id_statusbanheiros = id_statusbanheiros;
+        this.id_statusbanheiro = id_statusbanheiro;
     }
 
     public int getId_banheiro() {
@@ -78,11 +76,11 @@ public class Banheiro extends ArrayList<Banheiro> {
         this.lon = lon;
     }
 
-    public int getId_statusbanheiros() {
-        return id_statusbanheiros;
+    public int getId_statusbanheiro() {
+        return id_statusbanheiro;
     }
 
-    public void setId_statusbanheiros(int id_statusbanheiros) {
-        this.id_statusbanheiros = id_statusbanheiros;
+    public void setId_statusbanheiro(int id_statusbanheiro) {
+        this.id_statusbanheiro = id_statusbanheiro;
     }
 }

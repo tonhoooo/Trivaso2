@@ -70,7 +70,7 @@ public class LoginActivity extends AppCompatActivity implements GoogleApiClient.
         if(googleSignInResult.isSuccess()){
             goMainScream();
         }else {
-            Toast.makeText(this, R.string.not_log_in, Toast.LENGTH_LONG).show();
+            Toast.makeText(this, "Erro ao logar", Toast.LENGTH_LONG).show();
         }
     }
 

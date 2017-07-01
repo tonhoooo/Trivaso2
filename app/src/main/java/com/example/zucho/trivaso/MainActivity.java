@@ -205,7 +205,8 @@ public class MainActivity extends AppCompatActivity
         switch (id) {
             case R.id.nav_cadastrar:
 
-                showFragment(new CadastrarFragment(), "CadastrarFragment");
+                Intent intent = new Intent(this,CadastrarActivity.class);
+                this.startActivity(intent);
 
                 break;
             case R.id.nav_localizar:
